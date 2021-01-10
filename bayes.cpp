@@ -8,9 +8,8 @@ int main() {
 	double b = 0.6    ; //P(DOOR|POS) = 0.6
 	double c = 0.05   ; //P(DOOR|¬POS) = 0.05
 	
-	//TODO: Compute P(¬POS) and P(POS|DOOR)
-	double d =                   //P(¬POS)
-	double e =                   //P(POS|DOOR)
+	double d = 1 - a;				//P(¬POS)
+	double e = (a*b)/(a*b + c*d);	//P(POS|DOOR)
 	
 	//Print Result
 	cout << "P(POS|DOOR)= " <<    e    << endl;
