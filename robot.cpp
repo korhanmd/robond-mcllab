@@ -226,5 +226,8 @@ void visualization(int n, Robot robot, int step, Robot p[], Robot pr[])
 
 int main()
 {
+    // Instantiate a robot object from the Robot class
+    Robot myrobot;
+
     return 0;
 }
