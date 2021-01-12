@@ -229,5 +229,11 @@ int main()
     // Instantiate a robot object from the Robot class
     Robot myrobot;
 
+    // Set robot position
+    myrobot.set(30.0, 50.0, M_PI/2.0);
+
+    // Print out the robot position and orientation
+    cout << myrobot.show_pose() << endl;
+
     return 0;
 }
