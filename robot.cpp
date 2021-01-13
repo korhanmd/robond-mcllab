@@ -235,5 +235,17 @@ int main()
     // Print out the robot position and orientation
     cout << myrobot.show_pose() << endl;
 
+    // Turn clockwise by PI/2 and move by 15 meters
+    myrobot.move(-M_PI/2.0, 15.0);
+
+    // Print the distance from the robot toward the eight landmarks
+    cout << myrobot.read_sensors() << endl;
+
+    // Turn clockwise by PI/2 and move by 10 meters
+    myrobot.move(-M_PI/2.0, 10.0);
+
+    // Print the distance from the robot toward the eight landmarks
+    cout << myrobot.read_sensors() << endl;
+
     return 0;
 }
