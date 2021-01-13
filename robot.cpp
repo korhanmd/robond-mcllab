@@ -250,5 +250,9 @@ int main()
     // Print the distance from the robot toward the eight landmarks
     cout << myrobot.read_sensors() << endl;
 
+    // Instantiate 1000 Particles each with a random position and orientation
+    int n = 1000;
+    Robot p[n];
+
     return 0;
 }
