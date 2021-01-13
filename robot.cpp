@@ -254,5 +254,13 @@ int main()
     int n = 1000;
     Robot p[n];
 
+    // Loop over the set of particles
+    for (int i = 0; i < n; i++){
+        // For each particle add noise
+        p[i].set_noise(0.05, 0.05, 5.0);
+        // Print particle pose
+        cout << p[i].show_pose() << endl;
+    }
+
     return 0;
 }
