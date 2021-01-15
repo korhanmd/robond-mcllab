@@ -236,19 +236,19 @@ int main()
     myrobot.set(30.0, 50.0, M_PI/2.0);
 
     // Print out the robot position and orientation
-    cout << myrobot.show_pose() << endl;
+    //cout << myrobot.show_pose() << endl;
 
     // Turn clockwise by PI/2 and move by 15 meters
     myrobot.move(-M_PI/2.0, 15.0);
 
     // Print the distance from the robot toward the eight landmarks
-    cout << myrobot.read_sensors() << endl;
+    //cout << myrobot.read_sensors() << endl;
 
     // Turn clockwise by PI/2 and move by 10 meters
     myrobot.move(-M_PI/2.0, 10.0);
 
     // Print the distance from the robot toward the eight landmarks
-    cout << myrobot.read_sensors() << endl;
+    //cout << myrobot.read_sensors() << endl;
 
     // Instantiate 1000 Particles each with a random position and orientation
     int n = 1000;
@@ -259,6 +259,16 @@ int main()
         // For each particle add noise
         p[i].set_noise(0.05, 0.05, 5.0);
         // Print particle pose
+        //cout << p[i].show_pose() << endl;
+    }
+
+    // Create a new particle set
+    Robot p2[n];
+    
+    // Move each particle and assign p2 to p
+    for (int i = 0; i < n; i++){
+        p2[i] = p[i].move(0.1, 5.0);
+        p[i] = p2[i];
         cout << p[i].show_pose() << endl;
     }
 
