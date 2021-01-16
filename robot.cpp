@@ -294,5 +294,17 @@ int main()
     int index = gen_real_random()*n;
     double beta = 0;
 
+    // Resample the particles
+    for (int i = 0; i < n; i++){
+        beta += 2*gen_real_random()*max(w, n);
+        
+        while (w[index] < beta){
+            beta -= w[index];
+            index = mod((index + 1), n);
+        }
+        
+        p3[i] = p[index];
+    }
+
     return 0;
 }
