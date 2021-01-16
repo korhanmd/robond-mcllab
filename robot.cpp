@@ -266,50 +266,54 @@ int main()
     myrobot = Robot();
     vector<double> z;
 
-    // Move the robot and sense the environment afterwards
-    myrobot = myrobot.move(0.1, 5.0);
-    z = myrobot.sense();
+    // Iterate over the set of particles
+    int steps = 50;
+    for (int t = 0; t < steps; t++) {
+        // Move the robot and sense the environment afterwards
+        myrobot = myrobot.move(0.1, 5.0);
+        z = myrobot.sense();
 
-    // Create a new particle set
-    Robot p2[n];
-    
-    // Move each particle and assign p2 to p
-    for (int i = 0; i < n; i++){
-        p2[i] = p[i].move(0.1, 5.0);
-        p[i] = p2[i];
-        //cout << p[i].show_pose() << endl;
-    }
-
-    // Weights vector
-    double w[n];
-
-    // Calculate the weight of particles
-    for (int i = 0; i < n; i++){
-        w[i] = p[i].measurement_prob(z);
-        //cout << w[i] << endl;
-    }
-
-    // Initialize new particle set, index, and beta
-    Robot p3[n];
-    int index = gen_real_random()*n;
-    double beta = 0;
-
-    // Resample the particles
-    for (int i = 0; i < n; i++){
-        beta += 2*gen_real_random()*max(w, n);
+        // Create a new particle set
+        Robot p2[n];
         
-        while (w[index] < beta){
-            beta -= w[index];
-            index = mod((index + 1), n);
+        // Move each particle and assign p2 to p
+        for (int i = 0; i < n; i++){
+            p2[i] = p[i].move(0.1, 5.0);
+            p[i] = p2[i];
+            //cout << p[i].show_pose() << endl;
         }
-        
-        p3[i] = p[index];
-    }
 
-    // Print resampled particle poses
-    for (int i = 0; i < n; i++){
-        p[i] = p3[i];
-        cout << p[i].show_pose() << endl;
+        // Weights vector
+        double w[n];
+
+        // Calculate the weight of particles
+        for (int i = 0; i < n; i++){
+            w[i] = p[i].measurement_prob(z);
+            //cout << w[i] << endl;
+        }
+
+        // Initialize new particle set, index, and beta
+        Robot p3[n];
+        int index = gen_real_random()*n;
+        double beta = 0;
+
+        // Resample the particles
+        for (int i = 0; i < n; i++){
+            beta += 2*gen_real_random()*max(w, n);
+            
+            while (w[index] < beta){
+                beta -= w[index];
+                index = mod((index + 1), n);
+            }
+            
+            p3[i] = p[index];
+        }
+
+        // Print resampled particle poses
+        for (int i = 0; i < n; i++){
+            p[i] = p3[i];
+            cout << p[i].show_pose() << endl;
+        }
     }
 
     return 0;
