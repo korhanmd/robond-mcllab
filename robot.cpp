@@ -280,5 +280,8 @@ int main()
         cout << p[i].show_pose() << endl;
     }
 
+    // Weights vector
+    double w[n];
+
     return 0;
 }
