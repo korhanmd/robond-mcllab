@@ -262,6 +262,14 @@ int main()
         //cout << p[i].show_pose() << endl;
     }
 
+    // Re-initialize myrobot object and initialize a measurment vector
+    myrobot = Robot();
+    vector<double> z;
+
+    // Move the robot and sense the environment afterwards
+    myrobot = myrobot.move(0.1, 5.0);
+    z = myrobot.sense();
+
     // Create a new particle set
     Robot p2[n];
     
