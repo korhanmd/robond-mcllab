@@ -286,7 +286,7 @@ int main()
     // Calculate the weight of particles
     for (int i = 0; i < n; i++){
         w[i] = p[i].measurement_prob(z);
-        cout << w[i] << endl;
+        //cout << w[i] << endl;
     }
 
     // Initialize new particle set, index, and beta
@@ -306,5 +306,9 @@ int main()
         p3[i] = p[index];
     }
 
+    // Print resampled particle poses
+    for (int i = 0; i < n; i++){
+        cout << p3[i].show_pose() << endl;
+    }
     return 0;
 }
