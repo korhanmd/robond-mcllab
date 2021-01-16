@@ -289,5 +289,10 @@ int main()
         cout << w[i] << endl;
     }
 
+    // Initialize new particle set, index, and beta
+    Robot p3[n];
+    int index = gen_real_random()*n;
+    double beta = 0;
+
     return 0;
 }
