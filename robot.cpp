@@ -312,8 +312,11 @@ int main()
         // Print resampled particle poses
         for (int i = 0; i < n; i++){
             p[i] = p3[i];
-            cout << p[i].show_pose() << endl;
+            //cout << p[i].show_pose() << endl;
         }
+
+        // Evaluate the error
+        cout << "Step = " << t << ", Evaluation = " << evaluation(myrobot, p, n) << endl;
     }
 
     return 0;
