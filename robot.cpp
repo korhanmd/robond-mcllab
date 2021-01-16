@@ -308,7 +308,9 @@ int main()
 
     // Print resampled particle poses
     for (int i = 0; i < n; i++){
-        cout << p3[i].show_pose() << endl;
+        p[i] = p3[i];
+        cout << p[i].show_pose() << endl;
     }
+
     return 0;
 }
